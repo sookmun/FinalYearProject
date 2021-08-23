@@ -27,7 +27,8 @@
 % to go for the second option. 
 
 function Cost = CostFunction( x )
-dim=size(x,2);
-Cost=sum(x.^2); % Sphere function
+%dim=size(x,2);
+Cost=x+2; % Sphere function
+%Cost=sum(x.^2);
 end
 

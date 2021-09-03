@@ -81,7 +81,7 @@ options = gaoptimset(options,'PopulationType' ,'bitString');
 options = gaoptimset(options,'SelectionFcn' ,{@selectiontournament 4});
 options = gaoptimset(options,'CrossoverFcn' , @crossovertwopoint);
 options = gaoptimset(options,'CrossoverFraction',0.9);
-options = gaoptimset(options,'MutationFcn' ,{ @nova_mutacao 0.01 });
+options = gaoptimset(options,'MutationFcn' ,{ @mutationgaussian 0.01 });
 options = gaoptimset(options,'EliteCount' ,1);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,5 +177,6 @@ end
 im2=wiener2(im1,[2 2]);
 se=strel('disk',2);
 img_seg=uint8(imdilate(im2,se));
+imshow(img_seg);
 %img_seg=im1;
 %clear global im,Caa;

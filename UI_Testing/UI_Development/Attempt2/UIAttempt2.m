@@ -88,9 +88,11 @@ function run_butt_id_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 handles.folder;
+set(handles.message_id,"String","Starting");
 call_segmentation_feat_extraction(hObject, eventdata, handles);
+set(handles.message_id,"String","Segementation & Feature Extraction Done");
 confusion_met=SVM();
-
+set(handles.message_id,"String","Completed!")
 set(handles.uitable1,'Data',confusion_met);
 
 

@@ -177,6 +177,6 @@ end
 im2=wiener2(im1,[2 2]);
 se=strel('disk',2);
 img_seg=uint8(imdilate(im2,se));
-imshow(img_seg);
+
 %img_seg=im1;
 %clear global im,Caa;

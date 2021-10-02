@@ -20,12 +20,16 @@ TrainOutputs;
 TestOutputs = predict(SVMModel,x_ts);
 %make confusion matrix
 confMat = confusionmat(table2cell(testTargets), TestOutputs);
-confMat
-classOrder = SVMModel.ClassNames
+display(confMat);
+classOrder = SVMModel.ClassNames;
+display(classOrder);
 %change to cancerous / non cancerous
 %include in documentation, system is working but not giving a good answer
 
-
+crossValSVMModel = crossVal(SVMModel);
+generalizedError = kfoldLoss(crossValSVMModel);
+accuracy = 1 - generalizedError;
+display(accuracy);
 
 
 % Mdl = fitcecoc(X,Y)

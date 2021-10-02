@@ -1,9 +1,9 @@
-function SVM_LESH(data)
+function SVM_LESH(data,training_percentage)
 
 data=readtable(data);
 %split data
 [m,n] = size(data) ;
-P = 0.90 ;
+P = training_percentage ;
 idx = randperm(m)  ;
 training_set = data(idx(1:round(P*m)),:); 
 testing_set = data(idx(round(P*m)+1:end),:);

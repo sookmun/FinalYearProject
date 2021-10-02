@@ -1,9 +1,9 @@
-function confMat = SVM_GLCM(data)
+function confMat = SVM_GLCM(data,train_percentage)
 
 data=readtable(data);
 %split data
 [m,n] = size(data) ;
-P = 0.90 ;
+P = train_percentage ;
 idx = randperm(m)  ;
 training_set = data(idx(1:round(P*m)),:); 
 testing_set = data(idx(round(P*m)+1:end),:);

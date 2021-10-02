@@ -1,6 +1,6 @@
 function confMat = SVM_GLCM(data,train_percentage)
 
-data=readtable(data);
+% data=readtable(data);
 %split data
 [m,n] = size(data) ;
 P = train_percentage ;

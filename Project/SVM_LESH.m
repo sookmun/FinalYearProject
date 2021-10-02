@@ -1,6 +1,6 @@
 function SVM_LESH(data,training_percentage)
 
-data=readtable(data);
+% data=readtable(data);
 %split data
 [m,n] = size(data) ;
 P = training_percentage ;

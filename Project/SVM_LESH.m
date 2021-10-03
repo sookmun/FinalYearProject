@@ -9,15 +9,12 @@ training_set = data(idx(1:round(P*m)),:);
 testing_set = data(idx(round(P*m)+1:end),:);
 x_tr=training_set(:,1:512); 
 x_ts=testing_set(:,1:512);
-x_ts;
 trainTargets=training_set(:,513);
 testTargets=testing_set(:,513);
-testTargets;
 SVMModel = fitcecoc(x_tr,trainTargets);
 leshModel=SVMModel;
 save leshModel
 TrainOutputs = SVMModel.Y;
-TrainOutputs;
 %predict
 TestOutputs = predict(SVMModel,x_ts);
 %make confusion matrix

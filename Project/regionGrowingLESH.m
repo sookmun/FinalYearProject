@@ -59,5 +59,6 @@ function [finalTable] = regionGrowingLESH(data,tableOfActualCon)
     writetable(Table,filename,'Sheet',1,'Range','A1');
     finalTable = readtable(filename);
     finalTable.Properties.VariableNames{width(finalTable)} = 'Actual Condition';
+    disp(finalTable)
     writetable(finalTable,filename,'Sheet',1,'Range','A1');
 end

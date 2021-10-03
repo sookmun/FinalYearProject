@@ -1,4 +1,4 @@
-function [confMat,classOrder,accuracy] = SVM_GLCM(data,train_percentage)
+function confMat = SVM_GLCM(data,train_percentage)
 
 % data=readtable(data);
 %split data
@@ -14,8 +14,6 @@ trainTargets=training_set(:,5);
 testTargets=testing_set(:,5);
 testTargets;
 SVMModel = fitcecoc(x_tr,trainTargets);
-GLCMModel=SVMModel;
-save GLCMModel
 TrainOutputs = SVMModel.Y;
 TrainOutputs;
 %predict
@@ -25,14 +23,15 @@ confMat = confusionmat(table2cell(testTargets), TestOutputs);
 % display(confMat);
 classOrder = SVMModel.ClassNames;
 display(classOrder);
-classOrder =(size(classOrder,1));
-
+disp("There are",size(classOrder,1), "classes detected");
 %change to cancerous / non cancerous
 %include in documentation, system is working but not giving a good answer
 
 crossValSVMModel = crossval(SVMModel);
 generalizedError = kfoldLoss(crossValSVMModel);
 accuracy = 1 - generalizedError;
+disp("The accuracy of the accuracy);
+
 
 % Mdl = fitcecoc(X,Y)
 % Mdl.ClassNames

@@ -1,4 +1,4 @@
-function SVM_LESH(data,training_percentage)
+function [confMat,classOrder,accuracy]=SVM_LESH(data,training_percentage)
 
 % data=readtable(data);
 %split data
@@ -14,6 +14,8 @@ trainTargets=training_set(:,513);
 testTargets=testing_set(:,513);
 testTargets;
 SVMModel = fitcecoc(x_tr,trainTargets);
+leshModel=SVMModel;
+save leshModel
 TrainOutputs = SVMModel.Y;
 TrainOutputs;
 %predict
@@ -22,11 +24,12 @@ TestOutputs = predict(SVMModel,x_ts);
 confMat = confusionmat(table2cell(testTargets), TestOutputs);
 display(confMat);
 classOrder = SVMModel.ClassNames;
+classOrder =(size(classOrder,1));
 display(classOrder);
 %change to cancerous / non cancerous
 %include in documentation, system is working but not giving a good answer
 
-crossValSVMModel = crossVal(SVMModel);
+crossValSVMModel = crossval(SVMModel);
 generalizedError = kfoldLoss(crossValSVMModel);
 accuracy = 1 - generalizedError;
 display(accuracy);

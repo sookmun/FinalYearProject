@@ -12,6 +12,7 @@ function [finalTable] = hammoucheGLCM(data,tableOfActualCon)
     %loop through the images
     while(hasdata(breastImds))
         I = read(breastImds);
+        I=pre_process(I);
         img_seg = segmenta(I);
         [GLCM, SI] = graycomatrix(img_seg,'Offset',[1 1],'NumLevels',2,'GrayLimits',[],'Symmetric', true);
         stats = graycoprops(GLCM,'all');

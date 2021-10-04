@@ -24,13 +24,10 @@ classOrder = SVMModel.ClassNames;
 display(classOrder);
 classOrder =(size(classOrder,1));
 
-%change to cancerous / non cancerous
-%include in documentation, system is working but not giving a good answer
-
 crossValSVMModel = crossval(SVMModel);
 generalizedError = kfoldLoss(crossValSVMModel);
 accuracy = 1 - generalizedError;
-
+disp(confMat)
 % Mdl = fitcecoc(X,Y)
 % Mdl.ClassNames
 % CodingMat = Mdl.CodingMatrix

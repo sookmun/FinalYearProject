@@ -9,8 +9,8 @@ function [finalTable] = regionGrowingLESH(data,tableOfActualCon)
     %loop through the images
     while(hasdata(breastImds))
         I = read(breastImds);
+        I=pre_process(I);
         I = im2gray(I);
-
         I = double(I);
         Seeds = [180];
         SI = I == Seeds;
@@ -24,8 +24,6 @@ function [finalTable] = regionGrowingLESH(data,tableOfActualCon)
         end
 
         IM = imreconstruct(SI,TI);
-
-
         [lesh] = calc_LESH(IM);
         lesh = num2cell(lesh);
         newRow = [lesh condition(j,1)];

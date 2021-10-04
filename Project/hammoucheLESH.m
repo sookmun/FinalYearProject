@@ -10,6 +10,7 @@ function [finalTable] = hammoucheLESH(data,tableOfActualCon)
     %loop through the images
     while(hasdata(breastImds))
         I = read(breastImds);
+        I=pre_process(I);
         img_seg = segmenta(I);
         [lesh] = calc_LESH(img_seg);
         lesh = num2cell(lesh);

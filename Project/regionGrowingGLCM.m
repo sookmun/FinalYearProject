@@ -10,8 +10,8 @@ function [finalTable] = regionGrowingGLCM(data,tableOfActualCon)
     %loop through the images
     while(hasdata(breastImds))
         I = read(breastImds);
+        I=pre_process(I);
         I = im2gray(I);
-
         I = double(I);
         Seeds = [180];
         SI = I == Seeds;

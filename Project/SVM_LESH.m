@@ -17,6 +17,10 @@ save leshModel
 TrainOutputs = SVMModel.Y;
 %predict
 TestOutputs = predict(SVMModel,x_ts);
+disp("Test Output is here")
+disp(TestOutputs)
+disp("Test targets is here")
+disp(table2cell(testTargets))
 %make confusion matrix
 confMat = confusionmat(table2cell(testTargets), TestOutputs);
 display(confMat);

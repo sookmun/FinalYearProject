@@ -13,7 +13,7 @@ trainTargets=training_set(:,5);
 testTargets=testing_set(:,5);
 SVMModel = fitcecoc(x_tr,trainTargets);
 GLCMModel=SVMModel;
-save GLCMModel
+save UserSVMModel
 TrainOutputs = SVMModel.Y;
 %predict
 TestOutputs = predict(SVMModel,x_ts);

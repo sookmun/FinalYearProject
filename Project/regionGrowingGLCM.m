@@ -3,7 +3,6 @@ function [finalTable] = regionGrowingGLCM(data,tableOfActualCon)
     %reading the data of actual condition 
     condition=tableOfActualCon(:,2);
     condition=table2array(condition);
-
     final = [];
     j = 1;
 
@@ -37,17 +36,8 @@ function [finalTable] = regionGrowingGLCM(data,tableOfActualCon)
         j = j+1;
     end
 
-    Table = table(final);
-    filename = 'results_extra_rgrowing_glcm.xlsx';
-    writetable(Table,filename,'Sheet',1,'Range','A1');
-    finalTable = readtable(filename);
-    finalTable.Properties.VariableNames{'final_1'} = 'Contrast';
-    finalTable.Properties.VariableNames{'final_2'} = 'Correlation';
-    finalTable.Properties.VariableNames{'final_3'} = 'Energy';
-    finalTable.Properties.VariableNames{'final_4'} = 'Homogeneity';
-    finalTable.Properties.VariableNames{'final_5'} = 'Actual Condition';
-    disp(finalTable);
-    writetable(finalTable,filename,'Sheet',1,'Range','A1');
-    
+    Table = cell2table(final);
+    Table.Properties.VariableNames = {'Contrast' 'Correlation' 'Energy' 'Homogeneity','Actual Condition'};
+    finalTable=Table;
 
 end

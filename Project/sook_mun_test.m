@@ -1,24 +1,16 @@
-% [csvfile,path] = uigetfile({'*.xls';'*.xlsx';'*.csv';});
-% % 
-% File = fullfile(path, csvfile);
-% csvFile=readtable(File);
-% % hi = readtable(File);
-% path = uigetdir('C:\Users\Sook Mun\Google Drive\Y3S2\CS2\fit3162\Dataset_Tester');
-% hi = readtable(File);
-% actual_condition=hi(:,2);
-% % lst=[actual_condition];
-% lst=table2array(actual_condition);
-% y=lst(7,1);
-% lst
-
-% data=readtable("results_extra_hammouche_glcm.xlsx");
-% [conf,b,c]=SVM_GLCM(data,0.9);
-% disp(conf)
-% disp(b)
-% disp(c)
-fig = uifigure;
-message = {'Fire hazard!','Consider reducing temperature.'};
-uialert(fig,message,'Warning','Icon','warning');
+app.folder = uigetdir('C:\');
+[file,path] = uigetfile({;'*.xlsx';'*.xls';'*.csv';}); % allowing user to choose excel files
+file = fullfile(path, file);
+app.csvFile=readtable(file);            
+            
+outputTable = regionGrowingLESH(app.folder,app.csvFile);
+[con_matric,noClasses,accuracy]=SVM_LESH(outputTable,0.7);
+disp(con_matric)
+disp(noClasses)
+disp(accuracy)
+% fig = uifigure;
+% message = {'Fire hazard!','Consider reducing temperature.'};
+% uialert(fig,message,'Warning','Icon','warning');
 
 % outputTable=hammoucheLESH(path,csvFile);
 % [con_matric,noClasses,accuracy]=SVM_LESH(outputTable,0.9);
@@ -81,18 +73,5 @@ uialert(fig,message,'Warning','Icon','warning');
 % %     'final_487','final_488','final_489','final_490','final_491','final_492','final_493','final_494','final_495','final_496',...
 % %     'final_497','final_498','final_499','final_500','final_501','final_502','final_503','final_504','final_505','final_506',...
 % %     'final_507','final_508','final_509','final_510','final_511','final_512'};
-% % final
-% % load leshModel
-% % 
-% % TestOutputs = predict(leshModel,final);
-% % 
-% % k=string(TestOutputs);
-% % Table = lesh;
-% % Table.Properties.VariableNames=
-% %     
-% % %     filename = 'results_hammouche_lesh.xlsx';
-% %     writetable(Table,filename,'Sheet',1,'Range','A1');
-% %     finalTable = readtable(filename);
-% %     finalTable.Properties.VariableNames{width(finalTable)} = 'Actual Condition';
-%     writetable(finalTable,filename,'Sheet',1,'Range','A1');
+
 

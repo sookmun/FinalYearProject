@@ -30,6 +30,8 @@ function [finalTable] = hammoucheGLCM(data,tableOfActualCon)
     filename = 'results_extra_hammouche_glcm.xlsx';
     writetable(Table,filename,'Sheet',1,'Range','A1');
     finalTable = readtable(filename);
+%     finalTable = Table;
+%     finalTable.Properties.VariableNames = {'Contrast' 'Correlation' 'Energy' 'Homogeneity'};
     finalTable.Properties.VariableNames{'final_1'} = 'Contrast';
     finalTable.Properties.VariableNames{'final_2'} = 'Correlation';
     finalTable.Properties.VariableNames{'final_3'} = 'Energy';

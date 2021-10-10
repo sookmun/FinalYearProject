@@ -1,17 +1,18 @@
-app.folder = uigetdir('C:\');
-[file,path] = uigetfile({;'*.xlsx';'*.xls';'*.csv';}); % allowing user to choose excel files
-file = fullfile(path, file);
-app.csvFile=readtable(file);            
-            
-outputTable = regionGrowingLESH(app.folder,app.csvFile);
-[con_matric,noClasses,accuracy]=SVM_LESH(outputTable,0.7);
-disp(con_matric)
-disp(noClasses)
-disp(accuracy)
-% fig = uifigure;
-% message = {'Fire hazard!','Consider reducing temperature.'};
-% uialert(fig,message,'Warning','Icon','warning');
-
+% app.folder = uigetdir('C:\');
+% [file,path] = uigetfile({;'*.xlsx';'*.xls';'*.csv';}); % allowing user to choose excel files
+% file = fullfile(path, file);
+% app.csvFile=readtable(file);            
+%             
+% outputTable = regionGrowingLESH(app.folder,app.csvFile);
+% [con_matric,noClasses,accuracy]=SVM_LESH(outputTable,0.7);
+% disp(con_matric)
+% disp(noClasses)
+% disp(accuracy)
+fig = uifigure;
+message = {'Wrong File Selected!','Choose a folder containing images'};
+uialert(fig,message,'Warning','Icon','warning');
+x=0.9
+class(x)
 % outputTable=hammoucheLESH(path,csvFile);
 % [con_matric,noClasses,accuracy]=SVM_LESH(outputTable,0.9);
 

@@ -2,9 +2,7 @@ function [finalTable] = regionGrowingLESH(data,tableOfActualCon)
     breastImds=imageDatastore(data);
     %reading the data of actual condition 
     condition=tableOfActualCon(:,2);
-%     disp(condition);
     condition=table2array(condition);
-%     disp(condition);
     final = {};
     j = 1;
 

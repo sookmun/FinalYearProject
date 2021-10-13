@@ -33,7 +33,7 @@
 %     In International Journal of Pattern Recognition and Image Analysis, distributed by Springer, Vol.18(3) pp. 434�441, 2008.
 
 function [Shape_vect]=calc_LESH(im)  %%,scale,n_orient,w,debug)
-
+assert(( ndims(im) == 3 && size(im,3) == 3 ) || (ismatrix(im) && ~isStringScalar(im)), "Error: input must be an image");
 
 
 feature_param=FeatureParam(); %%%% load some parameters values

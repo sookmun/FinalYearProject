@@ -1,4 +1,5 @@
 function img_seg=segmenta(im)
+assert(( ndims(im) == 3 && size(im,3) == 3 ), "Error: input must be 3D image");
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DECLARATION OF GLOBAL VARIABLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

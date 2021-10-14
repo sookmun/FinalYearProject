@@ -1,9 +1,20 @@
 function [finalTable] = hammoucheLESH(data,tableOfActualCon)
     %use absolute path to indicate file location
-    breastImds=imageDatastore(data);
+    try
+        breastImds=imageDatastore(data);
+    catch ME
+        error('Unable to read image in folder');
+    end
+
     %reading the data of actual condition 
-    condition=tableOfActualCon(:,2);
-    condition=table2array(condition);
+    try
+        [~,n] = size(tableOfActualCon);
+        assert(n==2,'Invalid number of row');
+        condition=tableOfActualCon(:,2);
+        condition=table2array(condition);
+    catch
+        error('Unable to read csv file');
+    end
     final = [];
     j = 1;
 

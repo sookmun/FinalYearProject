@@ -1,6 +1,6 @@
 function [confMat,classOrder,accuracy]=SVM_LESH(data,training_percentage)
 assert(istable(data), "Error - not a table");
-assert(isnumeric(percentage), "Error - not a number");
+assert(isnumeric(training_percentage), "Error - not a number");
 % data=readtable(data);
 %split data
 [m,n] = size(data) ;

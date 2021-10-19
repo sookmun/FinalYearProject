@@ -14,7 +14,7 @@ trainTargets=training_set(:,513);
 testTargets=testing_set(:,513);
 SVMModel = fitcecoc(x_tr,trainTargets);
 leshModel=SVMModel;
-save leshModel
+%save leshModel
 TrainOutputs = SVMModel.Y;
 %predict
 TestOutputs = predict(SVMModel,x_ts);
@@ -24,12 +24,12 @@ confMat = confusionmat(table2cell(testTargets), TestOutputs);
 display(confMat);
 classOrder = SVMModel.ClassNames;
 classOrder =(size(classOrder,1));
-display(classOrder);
+%display(classOrder);
 
 crossValSVMModel = crossval(SVMModel);
 generalizedError = kfoldLoss(crossValSVMModel);
 accuracy = 1 - generalizedError;
-display(accuracy);
+%display(accuracy);
 
 
 % Mdl = fitcecoc(X,Y)

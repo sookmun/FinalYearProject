@@ -1,6 +1,6 @@
 function [confMat,classOrder,accuracy] = SVM_GLCM(data,train_percentage)
 assert(istable(data), "Error - not a table");
-assert(isnumeric(percentage), "Error - not a number");
+assert(isnumeric(train_percentage), "Error - not a number");
 % data=readtable(data);
 %split data
 [m,n] = size(data) ;
@@ -14,7 +14,7 @@ trainTargets=training_set(:,5);
 testTargets=testing_set(:,5);
 SVMModel = fitcecoc(x_tr,trainTargets);
 GLCMModel=SVMModel;
-save GLCMModel
+%save GLCMModel
 TrainOutputs = SVMModel.Y;
 %predict
 TestOutputs = predict(SVMModel,x_ts);
@@ -22,13 +22,13 @@ TestOutputs = predict(SVMModel,x_ts);
 confMat = confusionmat(table2cell(testTargets), TestOutputs);
 % display(confMat);
 classOrder = SVMModel.ClassNames;
-display(classOrder);
+%display(classOrder);
 classOrder =(size(classOrder,1));
 
 crossValSVMModel = crossval(SVMModel);
 generalizedError = kfoldLoss(crossValSVMModel);
 accuracy = 1 - generalizedError;
-disp(confMat)
+%disp(confMat)
 % Mdl = fitcecoc(X,Y)
 % Mdl.ClassNames
 % CodingMat = Mdl.CodingMatrix

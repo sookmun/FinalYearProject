@@ -1,7 +1,9 @@
 # FIT3162
 
 FIT3162 Computer Science Project | Year 3 Semester 2 | MA_21 | Developing a New Method for Diagnosis the Breast Cancer in Mammography Images
+
 The source final source code for the project is in the folder Project >> https://github.com/sookmun/FinalYearProject/tree/main/Project
+
 The documentation and project proposal is in the Project Proposal &Documentations >> https://github.com/sookmun/FinalYearProject/tree/main/Project%20Proposal%20%26Documentations
 
 Breast Cancer Diagnosing System UI
